@@ -1,6 +1,6 @@
 <li id="<%= "#{dom_id(todo)}_container" %>" class="todo-item">
   <%= turbo_frame_tag dom_id(todo) do %>
-    <div class="todo-content">
+  <div class="todo-content">
       <%= link_to todo.name, edit_todo_path(todo), class: "todo-name #{'complete' if todo.complete?}" %>
 
       <div class="todo-actions">

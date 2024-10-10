@@ -12,13 +12,13 @@ end
   # GET /todos or /todos.json
   def index
     if params[:status] == "complete"
-      @todos = Todo.where(status: 'complete')
+      @todos = Todo.where(status: "complete")
     else
-      @todos = Todo.where(status: 'incomplete')
+      @todos = Todo.where(status: "incomplete")
     end
   end
-  
-  
+
+
 
   # GET /todos/1 or /todos/1.json
   def show
@@ -36,7 +36,7 @@ end
   # POST /todos or /todos.json
   def create
     @todo = Todo.new(todo_params)
-  
+
     respond_to do |format|
       if @todo.save
         format.turbo_stream
@@ -47,8 +47,8 @@ end
       end
     end
   end
-  
-  
+
+
   def update
     respond_to do |format|
       if @todo.update(todo_params)
@@ -65,7 +65,7 @@ end
   # DELETE /todos/1 or /todos/1.json
   def destroy
     @todo.destroy
-  
+
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@todo)}_container") }
       format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
