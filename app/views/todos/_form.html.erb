@@ -1,0 +1,17 @@
+<%= form_with(model: todo, id: "#{dom_id(todo)}_form", class: "todo-form") do |form| %>
+  <% if todo.errors.any? %>
+    <div id="error_explanation" class="error-container">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+      <ul>
+        <% todo.errors.each do |error| %>
+          <li class="error-message"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-fields">
+    <%= form.text_field :name, class: "todo-input", placeholder: "Add a new todo..." %>
+    <%= form.submit class: "todo-submit" %>
+  </div>
+<% end %>
